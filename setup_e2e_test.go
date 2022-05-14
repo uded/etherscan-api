@@ -32,7 +32,7 @@ func init() {
 	}
 	bucket = NewBucket(500 * time.Millisecond)
 
-	api = New(Mainnet, apiKey)
+	api = New(EthMainnet, apiKey)
 	api.Verbose = true
 	api.BeforeRequest = func(module string, action string, param map[string]interface{}) error {
 		bucket.Take()

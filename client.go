@@ -43,7 +43,7 @@ func New(network Network, APIKey string) *Client {
 	return NewCustomized(Customization{
 		Timeout: 30 * time.Second,
 		Key:     APIKey,
-		BaseURL: fmt.Sprintf(`https://%s.etherscan.io/api?`, network.SubDomain()),
+		BaseURL: network.Domain(),
 	})
 }
 
@@ -51,7 +51,7 @@ func New(network Network, APIKey string) *Client {
 type Customization struct {
 	// Timeout for API call
 	Timeout time.Duration
-	// API key applied from Etherscan
+	// API key applied from scanner
 	Key string
 	// Base URL like `https://api.etherscan.io/api?`
 	BaseURL string
