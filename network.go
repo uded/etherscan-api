@@ -32,12 +32,12 @@ var (
 
 // Network is ethereum network type (mainnet, ropsten, etc)
 type Network struct {
-	Name    string
-	Type    string
-	BaseURL string
+	Name    string // Name of the network or chain
+	Type    string // Type of the network, either main or test
+	baseURL string // baseURL for the API client
 }
 
-// Domain returns the subdomain of  etherscan API via n provided.
+// Domain returns the subdomain of etherscan API via n provided.
 func (n Network) Domain() (sub string) {
-	return n.BaseURL
+	return n.baseURL
 }

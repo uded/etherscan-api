@@ -38,6 +38,10 @@ type Client struct {
 	AfterRequest func(module, action string, param map[string]interface{}, outcome interface{}, requestErr error)
 }
 
+func (c *Client) GetNetwork() Network {
+	return c.network
+}
+
 // New initialize a new etherscan API client
 // please use pre-defined network value
 func New(network Network, APIKey string) *Client {
