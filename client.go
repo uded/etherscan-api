@@ -23,6 +23,7 @@ import (
 type Client struct {
 	coon    *http.Client
 	key     string
+	network Network
 	baseURL string
 
 	// Verbose when true, talks a lot

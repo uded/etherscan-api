@@ -7,36 +7,37 @@
 
 package etherscan
 
-const (
-	// // Ethereum public networks
-
+var (
 	// EthMainnet Ethereum mainnet for production
-	EthMainnet Network = "https://api.etherscan.io/api?"
+	EthMainnet Network = Network{"Ethereum", "main", "https://api.etherscan.io/api?"}
 	// EthRopsten Testnet(POW)
-	EthRopsten Network = "https://api-ropsten.etherscan.io/api?"
+	EthRopsten Network = Network{"Ethereum Ropsten", "test", "https://api-ropsten.etherscan.io/api?"}
 	// EthKovan Testnet(POA)
-	EthKovan Network = "https://api-kovan.etherscan.io/api?"
+	EthKovan Network = Network{"Ethereum Kovan", "test", "https://api-kovan.etherscan.io/api?"}
 	// EthRinkby Testnet(CLIQUE)
-	EthRinkby Network = "https://api-rinkeby.etherscan.io/api?"
+	EthRinkby Network = Network{"Ethereum Rinkby", "test", "https://api-rinkeby.etherscan.io/api?"}
 	// EthGoerli Testnet(CLIQUE)
-	EthGoerli Network = "https://api-goerli.etherscan.io/api?"
+	EthGoerli Network = Network{"Ethereum Goerli", "test", "https://api-goerli.etherscan.io/api?"}
 	// EthTobalaba Testnet
-	EthTobalaba Network = "https://api-tobalaba.etherscan.io/api?"
+	EthTobalaba Network = Network{"Ethereum Tobalaba", "test", "https://api-tobalaba.etherscan.io/api?"}
 	// MaticMainnet Matic mainnet for production
-	MaticMainnet Network = "https://api.polygonscan.com/api?"
+	MaticMainnet Network = Network{"Polygon", "main", "https://api.polygonscan.com/api?"}
 	// MaticTestnet Matic testnet for development
-	MaticTestnet Network = "https://api-testnet.polygonscan.com/api?"
+	MaticTestnet Network = Network{"Polygon Mumbai", "test", "https://api-testnet.polygonscan.com/api?"}
 	// BscMainnet Bsc mainnet for production
-	BscMainnet Network = "https://api.bscscan.com/api?"
+	BscMainnet Network = Network{"Binance", "main", "https://api.bscscan.com/api?"}
 	// BscTestnet Bsc testnet for development
-	BscTestnet Network = "https://api-testnet.bscscan.com/api?"
+	BscTestnet Network = Network{"Binance test", "test", "https://api-testnet.bscscan.com/api?"}
 )
 
 // Network is ethereum network type (mainnet, ropsten, etc)
-type Network string
+type Network struct {
+	Name    string
+	Type    string
+	BaseURL string
+}
 
-// SubDomain returns the subdomain of  etherscan API
-// via n provided.
+// Domain returns the subdomain of  etherscan API via n provided.
 func (n Network) Domain() (sub string) {
-	return string(n)
+	return n.BaseURL
 }
