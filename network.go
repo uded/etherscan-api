@@ -7,6 +7,11 @@
 
 package etherscan
 
+import (
+	"fmt"
+	"strings"
+)
+
 var (
 	// EthMainnet Ethereum mainnet for production
 	EthMainnet Network = Network{"Ethereum", "main", "https://api.etherscan.io/api?"}
@@ -28,7 +33,36 @@ var (
 	BscMainnet Network = Network{"Binance", "main", "https://api.bscscan.com/api?"}
 	// BscTestnet Bsc testnet for development
 	BscTestnet Network = Network{"Binance test", "test", "https://api-testnet.bscscan.com/api?"}
+
+	networks = map[string]*Network{
+		"ethmainnet":   &EthMainnet,
+		"ethereum":     &EthMainnet,
+		"eth":          &EthMainnet,
+		"ethropsten":   &EthRopsten,
+		"ropsten":      &EthRopsten,
+		"ethkovan":     &EthKovan,
+		"ethrinkby":    &EthRinkby,
+		"ethgoerli":    &EthGoerli,
+		"ethtobalaba":  &EthTobalaba,
+		"maticmainnet": &MaticMainnet,
+		"polygon":      &MaticMainnet,
+		"matic":        &MaticMainnet,
+		"matictestnet": &MaticTestnet,
+		"mumbai":       &MaticTestnet,
+		"bscmainnet":   &BscMainnet,
+		"binance":      &BscMainnet,
+		"bsctestnet":   &BscTestnet,
+	}
+
+	networkNames []string
 )
+
+func init() {
+	for name, _ := range networks {
+		networkNames = append(networkNames, name)
+	}
+
+}
 
 // Network is ethereum network type (mainnet, ropsten, etc)
 type Network struct {
@@ -40,4 +74,16 @@ type Network struct {
 // Domain returns the subdomain of etherscan API via n provided.
 func (n Network) Domain() (sub string) {
 	return n.baseURL
+}
+
+func ParseNetworkName(network string) (Network, error) {
+	if x, ok := networks[network]; ok {
+		return *x, nil
+	}
+	// Case insensitive parse, do a separate lookup to prevent unnecessary cost of lowercasing a string if we don't need to.
+	if x, ok := networks[strings.ToLower(network)]; ok {
+		return *x, nil
+	}
+	return Network{}, fmt.Errorf("%s is not a valid ETHNetworkType, try one of [%s]", network, strings.Join(networkNames, ", "))
+
 }
