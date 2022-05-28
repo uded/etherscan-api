@@ -33,25 +33,37 @@ var (
 	BscMainnet Network = Network{"Binance", "main", "https://api.bscscan.com/api?"}
 	// BscTestnet Bsc testnet for development
 	BscTestnet Network = Network{"Binance test", "test", "https://api-testnet.bscscan.com/api?"}
+	// AvaxMainnet Avalanche mainnet for production
+	AvaxMainnet Network = Network{"Avax", "main", "https://api.snowtrace.io/api?"}
+	// AvaxTestnet Avalanche testnet for development
+	AvaxTestnet Network = Network{"Avax test", "test", "https://api-testnet.snowtrace.io/api?"}
 
 	networks = map[string]*Network{
-		"ethmainnet":   &EthMainnet,
-		"ethereum":     &EthMainnet,
-		"eth":          &EthMainnet,
-		"ethropsten":   &EthRopsten,
-		"ropsten":      &EthRopsten,
-		"ethkovan":     &EthKovan,
-		"ethrinkby":    &EthRinkby,
-		"ethgoerli":    &EthGoerli,
-		"ethtobalaba":  &EthTobalaba,
-		"maticmainnet": &MaticMainnet,
-		"polygon":      &MaticMainnet,
-		"matic":        &MaticMainnet,
-		"matictestnet": &MaticTestnet,
-		"mumbai":       &MaticTestnet,
-		"bscmainnet":   &BscMainnet,
-		"binance":      &BscMainnet,
-		"bsctestnet":   &BscTestnet,
+		"ethmainnet":       &EthMainnet,
+		"ethereum":         &EthMainnet,
+		"eth":              &EthMainnet,
+		"ethropsten":       &EthRopsten,
+		"ropsten":          &EthRopsten,
+		"ethkovan":         &EthKovan,
+		"ethrinkby":        &EthRinkby,
+		"ethgoerli":        &EthGoerli,
+		"ethtobalaba":      &EthTobalaba,
+		"maticmainnet":     &MaticMainnet,
+		"polygon":          &MaticMainnet,
+		"matic":            &MaticMainnet,
+		"matictestnet":     &MaticTestnet,
+		"mumbai":           &MaticTestnet,
+		"bscmainnet":       &BscMainnet,
+		"binance":          &BscMainnet,
+		"bsctestnet":       &BscTestnet,
+		"avalanche":        &AvaxMainnet,
+		"avax":             &AvaxMainnet,
+		"avaxmainnet":      &AvaxMainnet,
+		"avalanchemainnet": &AvaxMainnet,
+		"avaxtestnet":      &AvaxTestnet,
+		"avalanchetestnet": &AvaxTestnet,
+		"avaxfuji":         &AvaxTestnet,
+		"avalanchefuji":    &AvaxTestnet,
 	}
 
 	networkNames []string
