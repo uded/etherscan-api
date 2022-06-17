@@ -14,56 +14,80 @@ import (
 
 var (
 	// EthMainnet Ethereum mainnet for production
-	EthMainnet Network = Network{"Ethereum", "main", "https://api.etherscan.io/api?"}
+	EthMainnet Network = Network{"Ethereum", "eth_main", "main", "https: // api.etherscan.io/api?"}
 	// EthRopsten Testnet(POW)
-	EthRopsten Network = Network{"Ethereum Ropsten", "test", "https://api-ropsten.etherscan.io/api?"}
+	EthRopsten Network = Network{"Ethereum Ropsten", "eth_ropsten", "test", "https://api-ropsten.etherscan.io/api?"}
 	// EthKovan Testnet(POA)
-	EthKovan Network = Network{"Ethereum Kovan", "test", "https://api-kovan.etherscan.io/api?"}
+	EthKovan Network = Network{"Ethereum Kovan", "eth_kovan", "test", "https://api-kovan.etherscan.io/api?"}
 	// EthRinkby Testnet(CLIQUE)
-	EthRinkby Network = Network{"Ethereum Rinkby", "test", "https://api-rinkeby.etherscan.io/api?"}
+	EthRinkby Network = Network{"Ethereum Rinkby", "eth_rinkby", "test", "https://api-rinkeby.etherscan.io/api?"}
 	// EthGoerli Testnet(CLIQUE)
-	EthGoerli Network = Network{"Ethereum Goerli", "test", "https://api-goerli.etherscan.io/api?"}
+	EthGoerli Network = Network{"Ethereum Goerli", "eth_goerli", "test", "https://api-goerli.etherscan.io/api?"}
 	// EthTobalaba Testnet
-	EthTobalaba Network = Network{"Ethereum Tobalaba", "test", "https://api-tobalaba.etherscan.io/api?"}
+	EthTobalaba Network = Network{"Ethereum Tobalaba", "eth_tobalaba", "test", "https://api-tobalaba.etherscan.io/api?"}
 	// MaticMainnet Matic mainnet for production
-	MaticMainnet Network = Network{"Polygon", "main", "https://api.polygonscan.com/api?"}
+	MaticMainnet Network = Network{"Polygon", "polygon", "main", "https://api.polygonscan.com/api?"}
 	// MaticTestnet Matic testnet for development
-	MaticTestnet Network = Network{"Polygon Mumbai", "test", "https://api-testnet.polygonscan.com/api?"}
+	MaticTestnet Network = Network{"Polygon Mumbai", "polygon_mumbai", "test", "https://api-testnet.polygonscan.com/api?"}
 	// BscMainnet Bsc mainnet for production
-	BscMainnet Network = Network{"Binance", "main", "https://api.bscscan.com/api?"}
+	BscMainnet Network = Network{"Binance", "bsc", "main", "https://api.bscscan.com/api?"}
 	// BscTestnet Bsc testnet for development
-	BscTestnet Network = Network{"Binance test", "test", "https://api-testnet.bscscan.com/api?"}
+	BscTestnet Network = Network{"Binance test", "bsc_test", "test", "https://api-testnet.bscscan.com/api?"}
 	// AvaxMainnet Avalanche mainnet for production
-	AvaxMainnet Network = Network{"Avax", "main", "https://api.snowtrace.io/api?"}
+	AvaxMainnet Network = Network{"Avax", "avax", "main", "https://api.snowtrace.io/api?"}
 	// AvaxTestnet Avalanche testnet for development
-	AvaxTestnet Network = Network{"Avax test", "test", "https://api-testnet.snowtrace.io/api?"}
+	AvaxTestnet Network = Network{"Avax test", "avax_test", "test", "https://api-testnet.snowtrace.io/api?"}
 
 	networks = map[string]*Network{
-		"ethmainnet":       &EthMainnet,
-		"ethereum":         &EthMainnet,
-		"eth":              &EthMainnet,
-		"ethropsten":       &EthRopsten,
-		"ropsten":          &EthRopsten,
-		"ethkovan":         &EthKovan,
-		"ethrinkby":        &EthRinkby,
-		"ethgoerli":        &EthGoerli,
-		"ethtobalaba":      &EthTobalaba,
-		"maticmainnet":     &MaticMainnet,
-		"polygon":          &MaticMainnet,
-		"matic":            &MaticMainnet,
-		"matictestnet":     &MaticTestnet,
-		"mumbai":           &MaticTestnet,
-		"bscmainnet":       &BscMainnet,
-		"binance":          &BscMainnet,
-		"bsctestnet":       &BscTestnet,
-		"avalanche":        &AvaxMainnet,
-		"avax":             &AvaxMainnet,
-		"avaxmainnet":      &AvaxMainnet,
-		"avalanchemainnet": &AvaxMainnet,
-		"avaxtestnet":      &AvaxTestnet,
-		"avalanchetestnet": &AvaxTestnet,
-		"avaxfuji":         &AvaxTestnet,
-		"avalanchefuji":    &AvaxTestnet,
+		EthMainnet.Name:         &EthMainnet,
+		EthMainnet.CommonName:   &EthMainnet,
+		"ethmainnet":            &EthMainnet,
+		"ethereum":              &EthMainnet,
+		"eth":                   &EthMainnet,
+		EthRopsten.Name:         &EthRopsten,
+		EthRopsten.CommonName:   &EthRopsten,
+		"ethropsten":            &EthRopsten,
+		"ropsten":               &EthRopsten,
+		EthKovan.Name:           &EthKovan,
+		EthKovan.CommonName:     &EthKovan,
+		"ethkovan":              &EthKovan,
+		EthRinkby.Name:          &EthRinkby,
+		EthRinkby.CommonName:    &EthRinkby,
+		"ethrinkby":             &EthRinkby,
+		EthGoerli.Name:          &EthGoerli,
+		EthGoerli.CommonName:    &EthGoerli,
+		"ethgoerli":             &EthGoerli,
+		EthTobalaba.Name:        &EthTobalaba,
+		EthTobalaba.CommonName:  &EthTobalaba,
+		"ethtobalaba":           &EthTobalaba,
+		MaticMainnet.Name:       &MaticMainnet,
+		MaticMainnet.CommonName: &MaticMainnet,
+		"maticmainnet":          &MaticMainnet,
+		"polygon":               &MaticMainnet,
+		"matic":                 &MaticMainnet,
+		MaticTestnet.Name:       &MaticTestnet,
+		MaticTestnet.CommonName: &MaticTestnet,
+		"matictestnet":          &MaticTestnet,
+		"mumbai":                &MaticTestnet,
+		BscMainnet.Name:         &BscMainnet,
+		BscMainnet.CommonName:   &BscMainnet,
+		"bscmainnet":            &BscMainnet,
+		"binance":               &BscMainnet,
+		BscTestnet.Name:         &BscTestnet,
+		BscTestnet.CommonName:   &BscTestnet,
+		"bsctestnet":            &BscTestnet,
+		AvaxMainnet.Name:        &AvaxMainnet,
+		AvaxMainnet.CommonName:  &AvaxMainnet,
+		"avalanche":             &AvaxMainnet,
+		"avax":                  &AvaxMainnet,
+		"avaxmainnet":           &AvaxMainnet,
+		"avalanchemainnet":      &AvaxMainnet,
+		AvaxTestnet.Name:        &AvaxTestnet,
+		AvaxTestnet.CommonName:  &AvaxTestnet,
+		"avaxtestnet":           &AvaxTestnet,
+		"avalanchetestnet":      &AvaxTestnet,
+		"avaxfuji":              &AvaxTestnet,
+		"avalanchefuji":         &AvaxTestnet,
 	}
 
 	networkNames []string
@@ -73,14 +97,14 @@ func init() {
 	for name, _ := range networks {
 		networkNames = append(networkNames, name)
 	}
-
 }
 
 // Network is ethereum network type (mainnet, ropsten, etc)
 type Network struct {
-	Name    string // Name of the network or chain
-	Type    string // Type of the network, either main or test
-	baseURL string // baseURL for the API client
+	Name       string // Name of the network or chain
+	CommonName string // CommonName of the network or chain
+	Type       string // Type of the network, either main or test
+	baseURL    string // baseURL for the API client
 }
 
 // Domain returns the subdomain of etherscan API via n provided.
