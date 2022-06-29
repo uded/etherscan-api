@@ -20,7 +20,7 @@ var (
 	// EthKovan Testnet(POA)
 	EthKovan Network = Network{"Ethereum Kovan", "eth_kovan", "test", "https://api-kovan.etherscan.io/api?"}
 	// EthRinkby Testnet(CLIQUE)
-	EthRinkby Network = Network{"Ethereum Rinkby", "eth_rinkby", "test", "https://api-rinkeby.etherscan.io/api?"}
+	EthRinkby Network = Network{"Ethereum Rinkby", "eth_rinkeby", "test", "https://api-rinkeby.etherscan.io/api?"}
 	// EthGoerli Testnet(CLIQUE)
 	EthGoerli Network = Network{"Ethereum Goerli", "eth_goerli", "test", "https://api-goerli.etherscan.io/api?"}
 	// EthTobalaba Testnet
@@ -37,57 +37,91 @@ var (
 	AvaxMainnet Network = Network{"Avax", "avax", "main", "https://api.snowtrace.io/api?"}
 	// AvaxTestnet Avalanche testnet for development
 	AvaxTestnet Network = Network{"Avax test", "avax_test", "test", "https://api-testnet.snowtrace.io/api?"}
+	// Fantom mainnet for production
+	FantomMainnet Network = Network{"Fantom", "fantom", "main", "https://api.ftmscan.com/api?"}
+	// FantomTestNet
+	FantomTestnet Network = Network{"Fantom test", "fantom_test", "test", "https://api-testnet.ftmscan.com/api?"}
+	// Cronos mainnet for production
+	CronosMainnet Network = Network{"Cronos", "cronos", "main", "https://api-testnet.ftmscan.com/api?"}
+	// Cronos test net
+	CronosTestnet Network = Network{"Cronos test", "cronos_test", "test", "https://api-testnet.cronoscan.com/api?"}
+	// Arbitrum mainnet for production
+	ArbitrumMainnet Network = Network{"Arbitrum", "arbitrum", "main", "https://api.arbiscan.io/api?"}
+	// Arbitrum test net
+	ArbitrumTestnet Network = Network{"Arbitrum test", "arbitrum_test", "test", "https://api-testnet.arbiscan.io/"}
 
 	networks = map[string]*Network{
-		EthMainnet.Name:         &EthMainnet,
-		EthMainnet.CommonName:   &EthMainnet,
-		"ethmainnet":            &EthMainnet,
-		"ethereum":              &EthMainnet,
-		"eth":                   &EthMainnet,
-		EthRopsten.Name:         &EthRopsten,
-		EthRopsten.CommonName:   &EthRopsten,
-		"ethropsten":            &EthRopsten,
-		"ropsten":               &EthRopsten,
-		EthKovan.Name:           &EthKovan,
-		EthKovan.CommonName:     &EthKovan,
-		"ethkovan":              &EthKovan,
-		EthRinkby.Name:          &EthRinkby,
-		EthRinkby.CommonName:    &EthRinkby,
-		"ethrinkby":             &EthRinkby,
-		EthGoerli.Name:          &EthGoerli,
-		EthGoerli.CommonName:    &EthGoerli,
-		"ethgoerli":             &EthGoerli,
-		EthTobalaba.Name:        &EthTobalaba,
-		EthTobalaba.CommonName:  &EthTobalaba,
-		"ethtobalaba":           &EthTobalaba,
-		MaticMainnet.Name:       &MaticMainnet,
-		MaticMainnet.CommonName: &MaticMainnet,
-		"maticmainnet":          &MaticMainnet,
-		"polygon":               &MaticMainnet,
-		"matic":                 &MaticMainnet,
-		MaticTestnet.Name:       &MaticTestnet,
-		MaticTestnet.CommonName: &MaticTestnet,
-		"matictestnet":          &MaticTestnet,
-		"mumbai":                &MaticTestnet,
-		BscMainnet.Name:         &BscMainnet,
-		BscMainnet.CommonName:   &BscMainnet,
-		"bscmainnet":            &BscMainnet,
-		"binance":               &BscMainnet,
-		BscTestnet.Name:         &BscTestnet,
-		BscTestnet.CommonName:   &BscTestnet,
-		"bsctestnet":            &BscTestnet,
-		AvaxMainnet.Name:        &AvaxMainnet,
-		AvaxMainnet.CommonName:  &AvaxMainnet,
-		"avalanche":             &AvaxMainnet,
-		"avax":                  &AvaxMainnet,
-		"avaxmainnet":           &AvaxMainnet,
-		"avalanchemainnet":      &AvaxMainnet,
-		AvaxTestnet.Name:        &AvaxTestnet,
-		AvaxTestnet.CommonName:  &AvaxTestnet,
-		"avaxtestnet":           &AvaxTestnet,
-		"avalanchetestnet":      &AvaxTestnet,
-		"avaxfuji":              &AvaxTestnet,
-		"avalanchefuji":         &AvaxTestnet,
+		EthMainnet.Name:            &EthMainnet,
+		EthMainnet.CommonName:      &EthMainnet,
+		"ethmainnet":               &EthMainnet,
+		"ethereum":                 &EthMainnet,
+		"eth":                      &EthMainnet,
+		EthRopsten.Name:            &EthRopsten,
+		EthRopsten.CommonName:      &EthRopsten,
+		"ethropsten":               &EthRopsten,
+		"ropsten":                  &EthRopsten,
+		EthKovan.Name:              &EthKovan,
+		EthKovan.CommonName:        &EthKovan,
+		"ethkovan":                 &EthKovan,
+		EthRinkby.Name:             &EthRinkby,
+		EthRinkby.CommonName:       &EthRinkby,
+		"ethrinkby":                &EthRinkby,
+		EthGoerli.Name:             &EthGoerli,
+		EthGoerli.CommonName:       &EthGoerli,
+		"ethgoerli":                &EthGoerli,
+		EthTobalaba.Name:           &EthTobalaba,
+		EthTobalaba.CommonName:     &EthTobalaba,
+		"ethtobalaba":              &EthTobalaba,
+		MaticMainnet.Name:          &MaticMainnet,
+		MaticMainnet.CommonName:    &MaticMainnet,
+		"maticmainnet":             &MaticMainnet,
+		"polygon":                  &MaticMainnet,
+		"matic":                    &MaticMainnet,
+		MaticTestnet.Name:          &MaticTestnet,
+		MaticTestnet.CommonName:    &MaticTestnet,
+		"matictestnet":             &MaticTestnet,
+		"mumbai":                   &MaticTestnet,
+		BscMainnet.Name:            &BscMainnet,
+		BscMainnet.CommonName:      &BscMainnet,
+		"bscmainnet":               &BscMainnet,
+		"binance":                  &BscMainnet,
+		BscTestnet.Name:            &BscTestnet,
+		BscTestnet.CommonName:      &BscTestnet,
+		"bsctestnet":               &BscTestnet,
+		AvaxMainnet.Name:           &AvaxMainnet,
+		AvaxMainnet.CommonName:     &AvaxMainnet,
+		"avalanche":                &AvaxMainnet,
+		"avax":                     &AvaxMainnet,
+		"avaxmainnet":              &AvaxMainnet,
+		"avalanchemainnet":         &AvaxMainnet,
+		AvaxTestnet.Name:           &AvaxTestnet,
+		AvaxTestnet.CommonName:     &AvaxTestnet,
+		"avaxtestnet":              &AvaxTestnet,
+		"avalanchetestnet":         &AvaxTestnet,
+		"avaxfuji":                 &AvaxTestnet,
+		"avalanchefuji":            &AvaxTestnet,
+		FantomMainnet.Name:         &FantomMainnet,
+		FantomMainnet.CommonName:   &FantomMainnet,
+		"fantommainnet":            &FantomMainnet,
+		FantomTestnet.Name:         &FantomTestnet,
+		FantomTestnet.CommonName:   &FantomTestnet,
+		"fantomtest":               &FantomTestnet,
+		"fantomtestnet":            &FantomTestnet,
+		CronosMainnet.Name:         &CronosMainnet,
+		CronosMainnet.CommonName:   &CronosMainnet,
+		"cronosmainnet":            &CronosMainnet,
+		CronosTestnet.Name:         &CronosTestnet,
+		CronosTestnet.CommonName:   &CronosTestnet,
+		"cronostest":               &CronosTestnet,
+		"cronostestnet":            &CronosTestnet,
+		ArbitrumMainnet.Name:       &ArbitrumMainnet,
+		ArbitrumMainnet.CommonName: &ArbitrumMainnet,
+		"arbitrummainnet":          &ArbitrumMainnet,
+		ArbitrumTestnet.Name:       &ArbitrumTestnet,
+		ArbitrumTestnet.CommonName: &ArbitrumTestnet,
+		"arbitrumtest":             &ArbitrumTestnet,
+		"arbitrumtestnet":          &ArbitrumTestnet,
+		"arbitrum_rinkeby":         &ArbitrumTestnet,
 	}
 
 	networkNames []string
