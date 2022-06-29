@@ -14,7 +14,7 @@ import (
 
 var (
 	// EthMainnet Ethereum mainnet for production
-	EthMainnet Network = Network{"Ethereum", "eth_main", "main", "https: // api.etherscan.io/api?"}
+	EthMainnet Network = Network{"Ethereum", "eth_main", "main", "https://api.etherscan.io/api?"}
 	// EthRopsten Testnet(POW)
 	EthRopsten Network = Network{"Ethereum Ropsten", "eth_ropsten", "test", "https://api-ropsten.etherscan.io/api?"}
 	// EthKovan Testnet(POA)
@@ -42,7 +42,7 @@ var (
 	// FantomTestNet
 	FantomTestnet Network = Network{"Fantom test", "fantom_test", "test", "https://api-testnet.ftmscan.com/api?"}
 	// Cronos mainnet for production
-	CronosMainnet Network = Network{"Cronos", "cronos", "main", "https://api-testnet.ftmscan.com/api?"}
+	CronosMainnet Network = Network{"Cronos", "cronos", "main", "https://api.cronoscan.com/api?"}
 	// Cronos test net
 	CronosTestnet Network = Network{"Cronos test", "cronos_test", "test", "https://api-testnet.cronoscan.com/api?"}
 	// Arbitrum mainnet for production
@@ -128,7 +128,7 @@ var (
 )
 
 func init() {
-	for name, _ := range networks {
+	for name := range networks {
 		networkNames = append(networkNames, name)
 	}
 }
