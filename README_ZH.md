@@ -2,10 +2,10 @@
 
 # etherscan-api
 
-[![GoDoc](https://godoc.org/github.com/nanmu42/etherscan-api?status.svg)](https://godoc.org/github.com/nanmu42/etherscan-api)
-[![CI status](https://github.com/nanmu42/etherscan-api/actions/workflows/ci.yaml/badge.svg)](https://github.com/nanmu42/etherscan-api/actions)
-[![codecov](https://codecov.io/gh/nanmu42/etherscan-api/branch/master/graph/badge.svg)](https://codecov.io/gh/nanmu42/etherscan-api)
-[![Go Report Card](https://goreportcard.com/badge/github.com/nanmu42/etherscan-api)](https://goreportcard.com/report/github.com/nanmu42/etherscan-api)
+[![GoDoc](https://godoc.org/github.com/uded/etherscan-api?status.svg)](https://godoc.org/github.com/uded/etherscan-api)
+[![CI status](https://github.com/uded/etherscan-api/actions/workflows/ci.yaml/badge.svg)](https://github.com/uded/etherscan-api/actions)
+[![codecov](https://codecov.io/gh/uded/etherscan-api/branch/master/graph/badge.svg?token=2OFgDXhVM0)](https://codecov.io/gh/uded/etherscan-api)
+[![Go Report Card](https://goreportcard.com/badge/github.com/uded/etherscan-api)](https://goreportcard.com/report/github.com/uded/etherscan-api)
 
 Etherscan API的Golang客户端，
 支持几乎所有功能（accounts, transactions, tokens, contracts, blocks, stats），
@@ -15,14 +15,14 @@ Etherscan API的Golang客户端，
 # 使用方法
 
 ```bash
-go get github.com/nanmu42/etherscan-api
+go get github.com/uded/etherscan-api
 ```
 
 填入网络选项和API Key即可开始使用。 :rocket:
 
 ```go
 import (
-	"github.com/nanmu42/etherscan-api"
+	"github.com/uded/etherscan-api"
 	"fmt"
 )
 
@@ -63,7 +63,7 @@ func main() {
 }
 ```
 
-客户端方法列表可在[GoDoc](https://godoc.org/github.com/nanmu42/etherscan-api)查询。
+客户端方法列表可在[GoDoc](https://godoc.org/github.com/uded/etherscan-api)查询。
 
 # Etherscan API Key
 
