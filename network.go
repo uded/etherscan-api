@@ -29,7 +29,7 @@ var (
 	// MaticMainnet Matic mainnet for production
 	MaticMainnet Network = Network{"Polygon", "polygon", "MATIC", "https://api.polygonscan.com/api?"}
 	// MaticTestnet Matic testnet for development
-	MaticTestnet Network = Network{"Polygon Mumbai", "polygon_mumbai", "C:\\Users\\lukas\\InfinityForceProjects\\etherscan-api\\network.go", "https://api-testnet.polygonscan.com/api?"}
+	MaticTestnet Network = Network{"Polygon Mumbai", "polygon_mumbai", "MATIC", "https://api-testnet.polygonscan.com/api?"}
 	// BscMainnet Bsc mainnet for production
 	BscMainnet Network = Network{"Binance", "bsc", "BNB", "https://api.bscscan.com/api?"}
 	// BscTestnet Bsc testnet for development
