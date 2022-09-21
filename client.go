@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2018 LI Zhennan
+ * Copyright (c) 2022 Łukasz Rżanek
  *
  * Use of this work is governed by a MIT License.
  * You may find a license copy in project root.
@@ -48,7 +49,7 @@ func New(network Network, APIKey string) *Client {
 	return NewCustomized(Customization{
 		Timeout: 30 * time.Second,
 		Key:     APIKey,
-		BaseURL: network.Domain(),
+		Network: &network,
 	})
 }
 
@@ -60,6 +61,8 @@ type Customization struct {
 	Key string
 	// Base URL like `https://api.etherscan.io/api?`
 	BaseURL string
+	// Network
+	Network *Network
 	// When true, talks a lot
 	Verbose bool
 	// HTTP Client to be used. Specifying this value will ignore the Timeout value set
@@ -86,8 +89,12 @@ func NewCustomized(config Customization) *Client {
 			Timeout: config.Timeout,
 		}
 	}
+	if config.Network != nil {
+		config.BaseURL = config.Network.baseURL
+	}
 	return &Client{
 		coon:          httpClient,
+		network:       *config.Network,
 		key:           config.Key,
 		baseURL:       config.BaseURL,
 		Verbose:       config.Verbose,
