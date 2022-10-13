@@ -15,41 +15,41 @@ import (
 
 var (
 	// EthMainnet Ethereum mainnet for production
-	EthMainnet Network = Network{"Ethereum", "eth_main", "ETH", "https://api.etherscan.io/api?"}
+	EthMainnet Network = Network{"Ethereum", "eth_main", "ETH", "https://api.etherscan.io/api?", "0x1", 1}
 	// EthRopsten Testnet(POW)
-	EthRopsten Network = Network{"Ethereum Ropsten", "eth_ropsten", "ETH", "https://api-ropsten.etherscan.io/api?"}
+	EthRopsten Network = Network{"Ethereum Ropsten", "eth_ropsten", "ETH", "https://api-ropsten.etherscan.io/api?", "0x3", 3}
 	// EthKovan Testnet(POA)
-	EthKovan Network = Network{"Ethereum Kovan", "eth_kovan", "ETH", "https://api-kovan.etherscan.io/api?"}
+	EthKovan Network = Network{"Ethereum Kovan", "eth_kovan", "ETH", "https://api-kovan.etherscan.io/api?", "0x2a", 42}
 	// EthRinkby Testnet(CLIQUE)
-	EthRinkby Network = Network{"Ethereum Rinkby", "eth_rinkeby", "ETH", "https://api-rinkeby.etherscan.io/api?"}
+	EthRinkby Network = Network{"Ethereum Rinkby", "eth_rinkeby", "ETH", "https://api-rinkeby.etherscan.io/api?", "0x4", 4}
 	// EthGoerli Testnet(CLIQUE)
-	EthGoerli Network = Network{"Ethereum Goerli", "eth_goerli", "ETH", "https://api-goerli.etherscan.io/api?"}
+	EthGoerli Network = Network{"Ethereum Goerli", "eth_goerli", "ETH", "https://api-goerli.etherscan.io/api?", "0x5", 5}
 	// EthTobalaba Testnet
-	EthTobalaba Network = Network{"Ethereum Tobalaba", "eth_tobalaba", "ETH", "https://api-tobalaba.etherscan.io/api?"}
+	EthTobalaba Network = Network{"Ethereum Tobalaba", "eth_tobalaba", "ETH", "https://api-tobalaba.etherscan.io/api?", "0x0", 0}
 	// MaticMainnet Matic mainnet for production
-	MaticMainnet Network = Network{"Polygon", "polygon", "MATIC", "https://api.polygonscan.com/api?"}
+	MaticMainnet Network = Network{"Polygon", "polygon", "MATIC", "https://api.polygonscan.com/api?", "0x89", 137}
 	// MaticTestnet Matic testnet for development
-	MaticTestnet Network = Network{"Polygon Mumbai", "polygon_mumbai", "MATIC", "https://api-testnet.polygonscan.com/api?"}
+	MaticTestnet Network = Network{"Polygon Mumbai", "polygon_mumbai", "MATIC", "https://api-testnet.polygonscan.com/api?", "0x13881", 80001}
 	// BscMainnet Bsc mainnet for production
-	BscMainnet Network = Network{"Binance", "bsc", "BNB", "https://api.bscscan.com/api?"}
+	BscMainnet Network = Network{"Binance", "bsc", "BNB", "https://api.bscscan.com/api?", "0x38", 56}
 	// BscTestnet Bsc testnet for development
-	BscTestnet Network = Network{"Binance test", "bsc_test", "BNB", "https://api-testnet.bscscan.com/api?"}
+	BscTestnet Network = Network{"Binance test", "bsc_test", "BNB", "https://api-testnet.bscscan.com/api?", "0x61", 97}
 	// AvaxMainnet Avalanche mainnet for production
-	AvaxMainnet Network = Network{"Avax", "avax", "AVAX", "https://api.snowtrace.io/api?"}
+	AvaxMainnet Network = Network{"Avax", "avax", "AVAX", "https://api.snowtrace.io/api?", "0xa86a", 43114}
 	// AvaxTestnet Avalanche testnet for development
-	AvaxTestnet Network = Network{"Avax test", "avax_test", "AVAX", "https://api-testnet.snowtrace.io/api?"}
+	AvaxTestnet Network = Network{"Avax test", "avax_test", "AVAX", "https://api-testnet.snowtrace.io/api?", "0xa869", 43113}
 	// Fantom mainnet for production
-	FantomMainnet Network = Network{"Fantom", "fantom", "FTM", "https://api.ftmscan.com/api?"}
+	FantomMainnet Network = Network{"Fantom", "fantom", "FTM", "https://api.ftmscan.com/api?", "0xfa", 250}
 	// FantomTestNet
-	FantomTestnet Network = Network{"Fantom test", "fantom_test", "FTM", "https://api-testnet.ftmscan.com/api?"}
+	FantomTestnet Network = Network{"Fantom test", "fantom_test", "FTM", "https://api-testnet.ftmscan.com/api?", "0x0", 0}
 	// Cronos mainnet for production
-	CronosMainnet Network = Network{"Cronos", "cronos", "CRO", "https://api.cronoscan.com/api?"}
+	CronosMainnet Network = Network{"Cronos", "cronos", "CRO", "https://api.cronoscan.com/api?", "0x19", 25}
 	// Cronos test net
-	CronosTestnet Network = Network{"Cronos test", "cronos_test", "CRO", "https://api-testnet.cronoscan.com/api?"}
+	CronosTestnet Network = Network{"Cronos test", "cronos_test", "CRO", "https://api-testnet.cronoscan.com/api?", "0x152", 338}
 	// Arbitrum mainnet for production
-	ArbitrumMainnet Network = Network{"Arbitrum", "arbitrum", "ETH", "https://api.arbiscan.io/api?"}
+	ArbitrumMainnet Network = Network{"Arbitrum", "arbitrum", "ETH", "https://api.arbiscan.io/api?", "0x0", 0}
 	// Arbitrum test net
-	ArbitrumTestnet Network = Network{"Arbitrum test", "arbitrum_test", "ETH", "https://api-testnet.arbiscan.io/"}
+	ArbitrumTestnet Network = Network{"Arbitrum test", "arbitrum_test", "ETH", "https://api-testnet.arbiscan.io/", "0x0", 0}
 
 	networks = map[string]*Network{
 		EthMainnet.Name:            &EthMainnet,
@@ -140,6 +140,8 @@ type Network struct {
 	CommonName string // CommonName of the network or chain
 	TokenName  string // TokenName of the network
 	baseURL    string // baseURL for the API client
+	ChainIDHex string // ChainIDHex for identifing the chain
+	ChainID    int    // ChainID for identyfing the chain
 }
 
 // Domain returns the subdomain of etherscan API via n provided.
