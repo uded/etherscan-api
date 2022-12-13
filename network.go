@@ -50,6 +50,10 @@ var (
 	ArbitrumMainnet Network = Network{"Arbitrum", "arbitrum", "ETH", "https://api.arbiscan.io/api?", "0x0", 0}
 	// Arbitrum test net
 	ArbitrumTestnet Network = Network{"Arbitrum test", "arbitrum_test", "ETH", "https://api-testnet.arbiscan.io/", "0x0", 0}
+	// Optimism mainnet for production
+	OptimismMainnet Network = Network{"Optimsm", "optimism", "ETH", "https://api-optimistic.etherscan.io/", "0xa", 10}
+	// Optimism test net
+	OptimismTestnet Network = Network{"Optimism Goerli", "optimism_test", "ETH", "https://api-goerli-optimistic.etherscan.io/", "", 420}
 
 	networks = map[string]*Network{
 		EthMainnet.Name:            &EthMainnet,
@@ -123,6 +127,14 @@ var (
 		"arbitrumtest":             &ArbitrumTestnet,
 		"arbitrumtestnet":          &ArbitrumTestnet,
 		"arbitrum_rinkeby":         &ArbitrumTestnet,
+		OptimismMainnet.Name:       &OptimismMainnet,
+		OptimismMainnet.CommonName: &OptimismMainnet,
+		OptimismTestnet.Name:       &OptimismTestnet,
+		OptimismTestnet.CommonName: &OptimismTestnet,
+		"optimismtest":             &OptimismTestnet,
+		"optimismtestnet":          &OptimismTestnet,
+		"optimism_goerli":          &OptimismTestnet,
+		"optimismgoerli":           &OptimismTestnet,
 	}
 
 	networkNames []string
@@ -153,7 +165,7 @@ func ParseNetworkName(network string) (Network, error) {
 	if x, ok := networks[network]; ok {
 		return *x, nil
 	}
-	// Case insensitive parse, do a separate lookup to prevent unnecessary cost of lowercasing a string if we don't need to.
+	// Case-insensitive parse, do a separate lookup to prevent unnecessary cost of lowercasing a string if we don't need to.
 	if x, ok := networks[strings.ToLower(network)]; ok {
 		return *x, nil
 	}
