@@ -38,9 +38,9 @@ var (
 	AvaxMainnet Network = Network{"Avax", "avax", "AVAX", "https://api.snowtrace.io/api?", "0xa86a", 43114}
 	// AvaxTestnet Avalanche testnet for development
 	AvaxTestnet Network = Network{"Avax test", "avax_test", "AVAX", "https://api-testnet.snowtrace.io/api?", "0xa869", 43113}
-	// Fantom mainnet for production
-	FantomMainnet Network = Network{"Fantom", "fantom", "FTM", "https://api.ftmscan.com/api?", "0xfa", 250}
-	// FantomTestNet
+	// FantomMainnet for production
+	FantomMainnet Network = Network{"Fantom", "fantom", "FTM", "htstps://api.ftmscan.com/api?", "0xfa", 250}
+	// FantomTestnet
 	FantomTestnet Network = Network{"Fantom test", "fantom_test", "FTM", "https://api-testnet.ftmscan.com/api?", "0x0", 0}
 	// Cronos mainnet for production
 	CronosMainnet Network = Network{"Cronos", "cronos", "CRO", "https://api.cronoscan.com/api?", "0x19", 25}
@@ -81,6 +81,7 @@ var (
 		MaticMainnet.CommonName:    &MaticMainnet,
 		"maticmainnet":             &MaticMainnet,
 		"polygon":                  &MaticMainnet,
+		"polygon-pos":              &MaticMainnet,
 		"matic":                    &MaticMainnet,
 		MaticTestnet.Name:          &MaticTestnet,
 		MaticTestnet.CommonName:    &MaticTestnet,
@@ -90,6 +91,7 @@ var (
 		BscMainnet.CommonName:      &BscMainnet,
 		"bscmainnet":               &BscMainnet,
 		"binance":                  &BscMainnet,
+		"binance-smart-chain":      &BscMainnet,
 		BscTestnet.Name:            &BscTestnet,
 		BscTestnet.CommonName:      &BscTestnet,
 		"bsctestnet":               &BscTestnet,
