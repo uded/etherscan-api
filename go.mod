@@ -1,10 +1,10 @@
 module github.com/uded/etherscan-api
 
-go 1.18
+go 1.20
 
 require (
-	github.com/google/go-cmp v0.5.7
-	github.com/stretchr/testify v1.8.0
+	github.com/google/go-cmp v0.5.9
+	github.com/stretchr/testify v1.8.4
 )
 
 require (
