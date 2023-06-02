@@ -10,6 +10,7 @@ package etherscan
 import (
 	"fmt"
 	"os"
+	"strings"
 	"testing"
 	"time"
 )
@@ -23,14 +24,44 @@ var (
 	bucket *Bucket
 	// apiKey etherscan API key
 	apiKey string
+
+	TestNetworks []Networks
 )
+
+type Networks struct {
+	Network Network
+	APIKey  string
+	client  *Client
+}
 
 func init() {
 	apiKey = os.Getenv(apiKeyEnvName)
+	networks := os.Getenv("NETWORKS")
 	if apiKey == "" {
 		panic(fmt.Sprintf("API key is empty, set env variable %q with a valid API key to proceed.", apiKeyEnvName))
 	}
 	bucket = NewBucket(500 * time.Millisecond)
+
+	networksParsed := strings.Split(networks, ",") // parse all values as slice
+	for _, networkParsed := range networksParsed {
+		typeAndKey := strings.Split(networkParsed, ":") // split the network type and api key
+		if len(typeAndKey) != 2 {
+			// return errors.New("invalid network format - should be <network>:<api-key>")
+		}
+		network, err := ParseNetworkName(strings.TrimSpace(typeAndKey[0]))
+		if err != nil {
+			// return err
+		}
+
+		api = New(network, typeAndKey[1])
+		api.Verbose = true
+		api.BeforeRequest = func(module string, action string, param map[string]interface{}) error {
+			bucket.Take()
+			return nil
+		}
+
+		TestNetworks = append(TestNetworks, Networks{network, typeAndKey[1], api})
+	}
 
 	api = New(EthMainnet, apiKey)
 	api.Verbose = true

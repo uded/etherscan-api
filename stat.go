@@ -7,9 +7,17 @@
 
 package etherscan
 
+import (
+	"errors"
+)
+
 // EtherTotalSupply gets total supply of ether
 func (c *Client) EtherTotalSupply() (totalSupply *BigInt, err error) {
-	err = c.call("stats", "ethsupply", nil, &totalSupply)
+	if c.network.TokenName != "" {
+		err = c.call("stats", c.network.TokenName+"supply", nil, &totalSupply)
+	} else {
+		return &BigInt{}, errors.New("this network does not support total supply query")
+	}
 	return
 }
 

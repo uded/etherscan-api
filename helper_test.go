@@ -11,6 +11,8 @@ import (
 	"math/big"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBigInt(t *testing.T) {
@@ -19,13 +21,13 @@ func TestBigInt(t *testing.T) {
 
 	b := new(BigInt)
 	err := b.UnmarshalText([]byte(ansStr))
-	noError(t, err, "BigInt.UnmarshalText")
+	assert.NoError(t, err)
 
 	if b.Int().Cmp(ans) != 0 {
 		t.Fatalf("BigInt.UnmarshalText not working, got %v, want %v", b.Int(), ans)
 	}
 	textBytes, err := b.MarshalText()
-	noError(t, err, "BigInt.MarshalText")
+	assert.NoError(t, err)
 
 	if string(textBytes) != ansStr {
 		t.Fatalf("BigInt.MarshalText not working, got %s, want %s", textBytes, ansStr)
@@ -38,13 +40,13 @@ func TestTime(t *testing.T) {
 
 	b := new(Time)
 	err := b.UnmarshalText([]byte(ansStr))
-	noError(t, err, "Time.UnmarshalText")
+	assert.NoError(t, err)
 
 	if !b.Time().Equal(ans) {
 		t.Fatalf("Time.UnmarshalText not working, got %v, want %v", b, ans)
 	}
 	textBytes, err := b.MarshalText()
-	noError(t, err, "BigInt.MarshalText")
+	assert.NoError(t, err)
 
 	if string(textBytes) != ansStr {
 		t.Fatalf("Time.MarshalText not working, got %s, want %s", textBytes, ansStr)
